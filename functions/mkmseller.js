@@ -8,6 +8,8 @@ const lambda = async (event, context) => {
   const data = await request.text()
   let $ = cheerio.load(data)
   let retObject = {}
+  let q = 0
+  let u = ""
   $("h3.card-title").each(function(i, elem) {
     //console.log(i);
     //console.log(elem);
@@ -18,9 +20,11 @@ const lambda = async (event, context) => {
       seller: seller,
     }
     retObject[i] = object
+    q = $quantity
+    u = seller
   }) // end each()
   //console.log(retObject);
-  const stringified = JSON.stringify(retObject)
+  const stringified = JSON.stringify({ seller: u, nbcards: q })
   return { statusCode: 200, body: stringified }
 }
 
