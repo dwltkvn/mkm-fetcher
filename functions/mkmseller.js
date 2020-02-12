@@ -1,12 +1,12 @@
 const fetch = require("node-fetch")
-//const cheerio = require("cheerio")
+const cheerio = require("cheerio")
 
 const lambda = async (event, context) => {
   const request = await fetch(
     "https://www.cardmarket.com/en/Magic/Users/Uraktus"
   )
   const data = await request.text()
-  /*let $ = cheerio.load(data)
+  let $ = cheerio.load(data)
   let retObject = {}
   $("h3.card-title").each(function(i, elem) {
     //console.log(i);
@@ -19,7 +19,7 @@ const lambda = async (event, context) => {
     }
     retObject[i] = object
   }) // end each()
-  //console.log(retObject);*/
+  //console.log(retObject);
   return { statusCode: 200, body: data }
 }
 
