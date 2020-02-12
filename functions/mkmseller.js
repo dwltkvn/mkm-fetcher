@@ -8,6 +8,7 @@ const lambda = async (event, context) => {
   const data = await request.text()
   let $ = cheerio.load(data)
   let retObject = {}
+  let q = 0
   $("h3.card-title").each(function(i, elem) {
     //console.log(i);
     //console.log(elem);
@@ -17,10 +18,11 @@ const lambda = async (event, context) => {
       quantity: $quantity,
       seller: seller,
     }
+    q = $quantity
     retObject[i] = object
   }) // end each()
   //console.log(retObject);
-  return { statusCode: 200, body: data }
+  return { statusCode: 200, body: q }
 }
 
 //lambda().then(data => console.log(data))
