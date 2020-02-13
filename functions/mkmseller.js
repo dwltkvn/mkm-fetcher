@@ -13,15 +13,14 @@ const lambda = async (event, context) => {
   let $ = cheerio.load(data)
   let q = 0
   //div > ul > li:nth-child(1) > a > div > h3
-  $(
-    "div > ul > li:nth-child(1) > a > div > h3 > div.bracketed.text-muted.small.mt-1"
-  ).each(function(i, elem) {
+  $("h3.card-title > .bracketed").each(function(i, elem) {
     //$("h3.card-title").each(function(i, elem) {
     //console.log(i);
     //console.log(elem);
 
     let $quantity = $(this).text()
     q = $quantity
+    return false
     //console.log(i + " : " + q + " --- ")
   }) // end each()
   //console.log(retObject);
