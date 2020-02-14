@@ -58,8 +58,8 @@ const lambda = async (event, context) => {
   return { statusCode: 200, body: stringified }
 }
 
-lambda({ queryStringParameters: { card: "Tempete-de-mille-ans" } }).then(data =>
+/*lambda({ queryStringParameters: { card: "Tempete-de-mille-ans" } }).then(data =>
   console.log(data)
-)
+)*/
 
 exports.handler = lambda
