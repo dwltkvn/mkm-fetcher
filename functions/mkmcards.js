@@ -43,7 +43,7 @@ const lambda = async (event, context) => {
     if (str.length < 3) return false
 
     seller = str[0]
-    price = str[2].substr(1).replace(",", ".")
+    price = str[str.length - 2].substr(1).replace(",", ".")
 
     return false
     //console.log(i + " : " + q + " --- ")
@@ -58,8 +58,8 @@ const lambda = async (event, context) => {
   return { statusCode: 200, body: stringified }
 }
 
-/*lambda({ queryStringParameters: { card: "Tempete-de-mille-ans" } }).then(data =>
-  console.log(data)
-)*/
+lambda({
+  queryStringParameters: { card: "Muldrotha-la-maree-funeraire" },
+}).then(data => console.log(data))
 
 exports.handler = lambda
